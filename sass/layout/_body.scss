@@ -1,0 +1,162 @@
+
+body {
+    background: linear-gradient(to bottom right,rgb(255, 126, 147),pink);
+    padding: 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    ul.container {
+
+        width: calc(100vw - 8vw);
+        aspect-ratio: 1;
+        max-width: 690px;
+        padding: min(4vw,30px);
+        border-radius: 1rem;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(202, 201, 201);
+        gap: min(4vw,30px);
+
+        .beforeGame {
+
+            button.start {
+                padding: min(5vw, 20px) min(15vw, 60px);
+                font-size: 5vw;
+                border-radius: 2vw;
+                border: none;
+                outline: none;
+                animation: anim 4s infinite;
+                filter: drop-shadow(0 0 20px purple)
+                        drop-shadow(0 0 40px purple);
+
+                
+            }
+        }
+
+        li.card {
+            width: calc((100% - (3 * min(4vw,30px))) / 4);
+            aspect-ratio: 1;
+            border-radius: min(4vw,30px);
+            overflow: hidden;
+
+            display: grid;
+            place-items: center;
+
+            position: relative;
+
+            perspective-origin: 800px;
+            transform-style: preserve-3d;
+
+            transition: 1s;
+
+            &.flip {
+                transform: rotateY(180deg);
+
+                .back {
+                    opacity: 0;
+                }
+            }
+
+            .view {
+                position: absolute;
+               
+                pointer-events: none;
+                user-select: none;
+                
+            }
+
+            .front {
+                background-color: rgb(192, 192, 192);
+            }
+
+            .back {
+                font-size: calc(4vw);
+                font-weight: 900;
+                text-align: center;
+                
+                width: 100%;
+                height: 100%;
+                background-color: white;
+
+                display: grid;
+                place-items: center;
+
+                transition: 0.5s 0.2s;
+            }
+
+            img {
+                padding: min(2vw,15px);
+            }
+        }
+    }
+
+    section.options {
+        background-color: white;
+        border-radius: 0.6rem;
+        padding: 1rem;
+        max-width: 690px;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 1rem;
+
+        user-select: none;
+
+        .item {
+            width: max-content;
+        } 
+
+        .timer,.bestTime {
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        button {
+            padding: 0.3rem 0.9rem;
+            border-radius: 0.3rem;
+        }
+
+        button.start {
+
+            &.canStart {
+                animation: anim 4s infinite;
+                filter: drop-shadow(0 0 20px purple)
+                        drop-shadow(0 0 40px purple);
+            }
+        }
+    }
+}
+
+@keyframes anim {
+    25% {
+        filter: unset;
+        color: white;
+        text-shadow: 0 0 5px blue,
+         0 0 10px blue,
+         0 0 15px blue,
+         0 0 20px blue;
+    }
+    50% {
+        filter: drop-shadow(0 0 20px purple)
+                drop-shadow(0 0 40px purple);
+
+        color: black;
+        text-shadow: unset;
+    }
+    75%  {
+        filter: unset;
+        color: white;
+        text-shadow: 0 0 5px blue,
+         0 0 10px blue,
+         0 0 15px blue,
+         0 0 20px blue;
+    }
+}
